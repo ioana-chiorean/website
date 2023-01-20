@@ -1,7 +1,7 @@
 ---
 import type { MarkdownInstance } from "astro";
 import type { Person } from "../data/types";
-
+import { Picture } from "astro-imagetools/components";
 interface Props {
   personMarkdown: MarkdownInstance<Person>;
   id: string;
@@ -17,12 +17,24 @@ const { frontmatter: person, Content } = personMarkdown;
   onclick="if (event.currentTarget === event.target) event.currentTarget.close()"
 >
   <main>
-    <img
+    <!-- <img
       class="photo"
       src={`/img/${person.imgName}`}
       alt={person.name}
       loading="lazy"
-    />
+    /> -->
+
+    <div class="photo">
+      <Picture
+        src={`/img/${person.imgName}`}
+        alt={person.name}
+        sizes="(max-width: 756px) 200px, 300px"
+        preload="webp"
+        includeSourceFormat={false}
+        fallbackFormat="png"
+      />
+    </div>
+
     <div class="details">
       <div id={`${id}-title`} class="title" role="heading">
         <strong class="name">{person.name}</strong>

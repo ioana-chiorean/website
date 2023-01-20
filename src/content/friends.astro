@@ -1,6 +1,7 @@
 ---
 import { sponsors } from "../data/sponsors";
 import { communities } from "../data/communities";
+import { Img } from "astro-imagetools/components";
 ---
 
 {
@@ -13,9 +14,11 @@ import { communities } from "../data/communities";
           These are the companies that support our event financially through the{" "}
           <strong>€3,000</strong> standard package. <br />
           If you are interested in supporting us,{" "}
-          <strong><a href="/brochure.pdf" target="_blank" rel="noreferrer noopener">
-            check out our sponsorship brochure
-          </a></strong>{" "}
+          <strong>
+            <a href="/brochure.pdf" target="_blank" rel="noreferrer noopener">
+              check out our sponsorship brochure
+            </a>
+          </strong>{" "}
           for more information.
         </p>
       </div>
@@ -30,7 +33,12 @@ import { communities } from "../data/communities";
               rel="noreferrer noopener"
               title={sponsor.name}
             >
-              <img src={`/img/${sponsor.imgName}`} alt="" loading="lazy" />
+              <Img
+                src={`/img/${sponsor.imgName}`}
+                alt=""
+                loading="lazy"
+                placeholder="none"
+              />
             </a>
           </li>
         ))}
@@ -62,6 +70,8 @@ import { communities } from "../data/communities";
     ))
   }
 </ul>
+
+<!-- revo.js is a svg and Img does not support svg -->
 
 <style>
   .list {

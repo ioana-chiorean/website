@@ -11,8 +11,11 @@
     "prettier": "prettier --write ."
   },
   "devDependencies": {
-    "astro": "^1.0.6",
-    "prettier": "^2.7.1",
+    "astro": "^1.9.2",
+    "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.5.5"
+  },
+  "dependencies": {
+    "astro-imagetools": "^0.7.4"
   }
 }

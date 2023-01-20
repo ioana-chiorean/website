@@ -2,7 +2,7 @@
 import type { Person } from "../data/types";
 import Modal from "../components/Modal.astro";
 import type { MarkdownInstance } from "astro";
-
+import { Picture } from "astro-imagetools/components";
 export interface Props {
   personMarkdown: MarkdownInstance<Person>;
   variant?: "large" | "small";
@@ -21,7 +21,15 @@ const id = file.split("/").pop() || "";
     class="clickable-photo"
     onclick={`window['${id}'].showModal()`}
   >
-    <img src={`/img/${person.imgName}`} alt={person.name} />
+    <!-- <img src={`/img/${person.imgName}`} alt={person.name} /> -->
+    <Picture
+      src={`/img/${person.imgName}`}
+      alt={person.name}
+      sizes="(max-width: 1200px) 15rem, 11rem"
+      preload="webp"
+      includeSourceFormat={false}
+      fallbackFormat="png"
+    />
   </button>
   <div class="details">
     <strong>
